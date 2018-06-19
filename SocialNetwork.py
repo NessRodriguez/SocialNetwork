@@ -13,10 +13,10 @@ class User:
     def addFriend(self, person):
         self.friends.append(person)
 
-    def removeFriend(self, username):
-        for friend in self.friends:
-            if friend.username == username:
-                self.friends.remove(User(username))
+    def removeFriend(self, person):
+####        for friend in self.friends:
+####            if friend.username == username:
+                self.friends.remove(person)
         
 ##    def addFirstName(self, firstName):
 ##        self.firstName = firstName
@@ -55,12 +55,13 @@ if __name__ == "__main__":
     Lando.posts.append("Send Help")
     Erick.posts.append("Quiero Comer")
     Chuck.posts.append("I'm A Chuckster")
-
-    Vanessa.removeFriend(Chuck)
     
     Vanessa.viewNewsFeed()
     Vanessa.showUsernames()
     Vanessa.addPost("Go Away")
+
+    Vanessa.removeFriend(Chuck)
+    Vanessa.showUsernames()
    
 ##    vanessa.addFirstName("Vanessa")
 ##    vanessa.addLastName("Rodriguez")
