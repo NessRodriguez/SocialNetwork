@@ -2,44 +2,71 @@
 ## My Social Network
 
 class User:
-    def __init__(self, firstName, lastName, username, bio, userID):
-        self.firstName = firstName
-        self.lastName = lastName
+    def __init__(self, username):
         self.username = username
-        self.bio = bio
-        self.userID = userID
+##        self.firstName = " "
+##        self.lastName = " "
+##        self.bio = " "
         self.friends = []
         self.posts = []
 
-    def addFriend(self, username):
-        self.friends.append(username)
+    def addFriend(self, person):
+        self.friends.append(person)
 
-##    def unFriend():
+    def removeFriend(self, username):
+        for friend in self.friends:
+            if friend.username == username:
+                self.friends.remove(User(username))
+        
+##    def addFirstName(self, firstName):
+##        self.firstName = firstName
+##    def addLastName(self, lastName):
+##        self.lastName = lastName
+##    def addBio(self, bio):
+##        self.bio = bio
+                
+    def addPost(self, post):
+        self.posts.append(post)
 
-    def viewNewsFeed(self, friends):
+    def showUsernames(self):
+        for friend in self.friends:
+            print (friend.username)
+            
+    def viewNewsFeed(self):
          for friend in self.friends:
-           print (friends.posts)
+            print (friend.posts)
 
 if __name__ == "__main__":
-    firstName = "Vanessa"
-    lastName = "Rodriguez"
-    username = "NessRodriguez"
-    bio = "I like pie?"
-    userID = "666"
 
-    vanessa = User(firstName, lastName, username, bio, userID)
-    james = User("James", "Abasta", "JamesIsApasta", "Pasta", "1003")
-    lando = User("Lando", "Calrissian", "LandoDamndo", "Let go of the mean man’s face.", "3005")
-    print (vanessa.firstName)
-    print (james.firstName)
-    print (lando.firstName)
+    username = "BandNerd"
 
-    vanessa.addFriend("JamesIsApasta")
-    vanessa.addFriend("LandoDamndo")
-    print (vanessa.friends)
-    james.posts.append("I'm Apasta")
-    lando.posts.append("Send Help")
-    vanessa.viewNewsFeed(username)
+    Vanessa = User("BandNerd")
+    James = User("JamesIsApasta")
+    Lando = User("LandoDamndo")
+    Erick = User("BarronCabezon")
+    Chuck = User("ChuckTheChuckster")
+
+    Vanessa.addFriend(James)
+    Vanessa.addFriend(Lando)
+    Vanessa.addFriend(Erick)
+    Vanessa.addFriend(Chuck)
+    
+    James.posts.append("I'm Apasta")
+    Lando.posts.append("Send Help")
+    Erick.posts.append("Quiero Comer")
+    Chuck.posts.append("I'm A Chuckster")
+
+    Vanessa.removeFriend(Chuck)
+    
+    Vanessa.viewNewsFeed()
+    Vanessa.showUsernames()
+    Vanessa.addPost("Go Away")
+   
+##    vanessa.addFirstName("Vanessa")
+##    vanessa.addLastName("Rodriguez")
+##    vanessa.addBio("I like pie?")
+
+  
 
 
     ## print (friend.posts)
