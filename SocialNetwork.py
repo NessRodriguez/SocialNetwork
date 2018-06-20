@@ -2,14 +2,14 @@
 ## My Social Network
 
 class User:
-    def __init__(self, username):
+    def __init__(self, username, userID):
         self.username = username
         self.firstName = " "
         self.lastName = " "
         self.bio = " "
         self.friends = []
         self.posts = []
-        self.userID = " "
+        self.userID = userID
 
     def addFriend(self, person):
         self.friends.append(person)
@@ -34,13 +34,14 @@ class User:
     def viewNewsFeed(self):
          for friend in self.friends:
             print (friend.posts)
-
             
     def createPost(self, content):
         myPost = post(content)
         self.post.append(myPost)
         myPost.createPostID(len(posts))
 
+    def createUserID(self, num):
+        self.userID = num
     
 class Post:
     def __init__(self, content):
@@ -51,53 +52,79 @@ class Post:
     def createPostID(self, num):
         self.postID = num
 
+    def addComment(self, comment):
+        self.comments.append(comment)
+
 class Network:
     def __init__(self):
         self.users = []
-        print ("User Created")
 
     def createUser(self, username):
         for user in self.users:
             if (user.username == username):
                 print ("Username Taken")
-            myUser = User(username)
-            self.users.append(User(username))
-            mySize = len(self.users)
-            myUser.createUserID(mySize)
+        mySize = len(self.users) + 1
+        myUser = User(username, mySize)
+        self.users.append(myUser)
+        print ("User Created")
+    def getOBJ(self, username):
+        userID = self.getUserID(username)
+        userOBJ = self.users[userID - 1]
+        return userOBJ
+    def getUserID(self, username):
+        for user in self.users:
+            if user.username == username:
+                return user.userID
 
 if __name__ == "__main__":
     network = Network()
     network.createUser("BandNerd")
-    username = "BandNerd"
+    BandNerd = network.getOBJ("BandNerd")
+    print (BandNerd.username)
+    network.createUser("JamesIsApasta")
+    JamesIsApasta = network.getOBJ("JamesIsApasta")
+    print (JamesIsApasta.username)
+    network.createUser("LandoDamndo")
+    LandoDamndo = network.getOBJ("LandoDamndo")
+    print (LandoDamndo.username)
+    network.createUser("BarronCabezon")
+    BarronCabezon = network.getOBJ("BarronCabezon")
+    print (BarronCabezon.username)
+    network.createUser("Chuck")
+    Chuck = network.getOBJ("Chuck")
+    print (Chuck.username)
     
-    Ness = User("BandNerd")
-    James = User("JamesIsApasta")
-    Lando = User("LandoDamndo")
-    Erick = User("BarronCabezon")
-    Chuck = User("ChuckTheChuckster")
-
-    Ness.addFriend(James)
-    Ness.addFriend(Lando)
-    Ness.addFriend(Erick)
-    Ness.addFriend(Chuck)
-    
-    James.posts.append("I'm Apasta")
-    Lando.posts.append("Send Help")
-    Erick.posts.append("Quiero Comer")
-    Chuck.posts.append("I'm A Chuckster")
-    
-    Ness.viewNewsFeed()
-    Ness.showUsernames()
-    Ness.addPost("Go Away")
-
-    Ness.removeFriend(Chuck)
-    Ness.showUsernames()
-   
-    Ness.addFirstName("Vanessa")
-    Ness.addLastName("Rodriguez")
-    Ness.addBio("I like pie?")
-
-    print (len(network.users))
+##    username = "BandNerd"
+##    
+##    Ness = User("BandNerd")
+##    James = User("JamesIsApasta")
+##    Lando = User("LandoDamndo")
+##    Erick = User("BarronCabezon")
+##    Chuck = User("Chuck")
+##
+##    Ness.addFriend(James)
+##    Ness.addFriend(Lando)
+##    Ness.addFriend(Erick)
+##    Ness.addFriend(Chuck)
+##    
+##    James.posts.append("I'm Apasta")
+##    Lando.posts.append("Send Help")
+##    Erick.posts.append("Quiero Comer")
+##    Chuck.posts.append("I'm Chuck")
+##    
+##    Ness.viewNewsFeed()
+##    Ness.showUsernames()
+##    Ness.addPost("Go Away")
+##
+##    Ness.removeFriend(Chuck)
+##    Ness.showUsernames()
+##    Ness.addComment(postID,"Help")
+##   
+##    Ness.addFirstName("Vanessa")
+##    Ness.addLastName("Rodriguez")
+##    Ness.addBio("I like pie?")
+##
+##    print (len(network.users))
 
     ## 1) Have 2 Friends
     ## 2) Add friends to your friends list
