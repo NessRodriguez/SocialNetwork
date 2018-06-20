@@ -4,26 +4,25 @@
 class User:
     def __init__(self, username):
         self.username = username
-##        self.firstName = " "
-##        self.lastName = " "
-##        self.bio = " "
+        self.firstName = " "
+        self.lastName = " "
+        self.bio = " "
         self.friends = []
         self.posts = []
+        self.userID = " "
 
     def addFriend(self, person):
         self.friends.append(person)
 
     def removeFriend(self, person):
-####        for friend in self.friends:
-####            if friend.username == username:
                 self.friends.remove(person)
         
-##    def addFirstName(self, firstName):
-##        self.firstName = firstName
-##    def addLastName(self, lastName):
-##        self.lastName = lastName
-##    def addBio(self, bio):
-##        self.bio = bio
+    def addFirstName(self, firstName):
+        self.firstName = firstName
+    def addLastName(self, lastName):
+        self.lastName = lastName
+    def addBio(self, bio):
+        self.bio = bio
                 
     def addPost(self, post):
         self.posts.append(post)
@@ -36,41 +35,69 @@ class User:
          for friend in self.friends:
             print (friend.posts)
 
+            
+    def createPost(self, content):
+        myPost = post(content)
+        self.post.append(myPost)
+        myPost.createPostID(len(posts))
+
+    
+class Post:
+    def __init__(self, content):
+        self.content = content
+        self.postID = " "
+        self.comment = []
+        
+    def createPostID(self, num):
+        self.postID = num
+
+class Network:
+    def __init__(self):
+        self.users = []
+        print ("User Created")
+
+    def createUser(self, username):
+        for user in self.users:
+            if (user.username == username):
+                print ("Username Taken")
+            myUser = User(username)
+            self.users.append(User(username))
+            mySize = len(self.users)
+            myUser.createUserID(mySize)
+
 if __name__ == "__main__":
-
+    network = Network()
+    network.createUser("BandNerd")
     username = "BandNerd"
-
-    Vanessa = User("BandNerd")
+    
+    Ness = User("BandNerd")
     James = User("JamesIsApasta")
     Lando = User("LandoDamndo")
     Erick = User("BarronCabezon")
     Chuck = User("ChuckTheChuckster")
 
-    Vanessa.addFriend(James)
-    Vanessa.addFriend(Lando)
-    Vanessa.addFriend(Erick)
-    Vanessa.addFriend(Chuck)
+    Ness.addFriend(James)
+    Ness.addFriend(Lando)
+    Ness.addFriend(Erick)
+    Ness.addFriend(Chuck)
     
     James.posts.append("I'm Apasta")
     Lando.posts.append("Send Help")
     Erick.posts.append("Quiero Comer")
     Chuck.posts.append("I'm A Chuckster")
     
-    Vanessa.viewNewsFeed()
-    Vanessa.showUsernames()
-    Vanessa.addPost("Go Away")
+    Ness.viewNewsFeed()
+    Ness.showUsernames()
+    Ness.addPost("Go Away")
 
-    Vanessa.removeFriend(Chuck)
-    Vanessa.showUsernames()
+    Ness.removeFriend(Chuck)
+    Ness.showUsernames()
    
-##    vanessa.addFirstName("Vanessa")
-##    vanessa.addLastName("Rodriguez")
-##    vanessa.addBio("I like pie?")
+    Ness.addFirstName("Vanessa")
+    Ness.addLastName("Rodriguez")
+    Ness.addBio("I like pie?")
 
-  
-
-
-    ## print (friend.posts)
+    print (len(network.users))
 
     ## 1) Have 2 Friends
     ## 2) Add friends to your friends list
